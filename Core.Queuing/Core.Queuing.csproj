@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Cap.RabbitMQ.Core</Title>
+    <Authors>Omar Aljundi</Authors>
+    <Company>GNTEQ</Company>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<None Include="transaction.json" Pack="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="transaction.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	
+
+
+	<ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.Kafka" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.MongoDB" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.MySql" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.PostgreSql" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.0.0" />
+    <PackageReference Include="DotNetCore.CAP.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Elasticsearch.Net" Version="7.17.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OpenSearch.Client" Version="1.6.0" />
+  </ItemGroup>
+	
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Core.Logging.OpenSearch\Core.Logging.OpenSearch.csproj" />
+	</ItemGroup>
+
+</Project>

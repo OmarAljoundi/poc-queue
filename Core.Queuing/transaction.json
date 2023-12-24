@@ -1,0 +1,50 @@
+{
+  "Triggers": [
+    {
+      "UniqueId": "OrderCreation",
+      "SequentialEvents": [
+        {
+          "TriggerName": "Order.ConfirmPayment",
+          "OnFailure": [ "Order.CancelOrder" ],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        },
+        {
+          "TriggerName": "Order.Update",
+          "OnFailure": [ "Order.CancelOrder", "Customer.SendFailureEmail" ],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        },
+        {
+          "TriggerName": "Order.SendEmail",
+          "OnFailure": [],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        }
+      ]
+    },
+    {
+      "UniqueId": "OrdersChecking",
+      "SequentialEvents": [
+        {
+          "TriggerName": "Order.ConfirmPayment",
+          "OnFailure": [ "Order.CancelOrder" ],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        },
+        {
+          "TriggerName": "Order.Update",
+          "OnFailure": [ "Order.CancelOrder", "Customer.SendFailureEmail" ],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        },
+        {
+          "TriggerName": "Order.SendEmail",
+          "OnFailure": [],
+          "RequeueIfFailureFailed": false,
+          "WaitInSecondsBeforePublishing": 5
+        }
+      ]
+    }
+  ]
+}
