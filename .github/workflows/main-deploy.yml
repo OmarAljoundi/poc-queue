@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Check Out Repo 
         uses: actions/checkout@v2
-      - name: Install DigitalOcean Controller
+      - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
-          token: dop_v1_b9ee01caa88fcc936b2b0c8ba61e409a236342a43bc595f454cdfb97817012a8
+          token: dop_v1_86c223453d2bc447b97fff7c1ede3be0181858cf39674cbfd7837faece967da5
       - name: Set up Docker Builder
         uses: docker/setup-buildx-action@v1
       - name: Authenticate with DigitalOcean Container Registry
