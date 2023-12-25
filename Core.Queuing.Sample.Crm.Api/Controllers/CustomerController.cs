@@ -18,7 +18,6 @@ namespace Core.Queuing.Sample.Crm.Api.Controllers
         {
             try
             {
-                var x = "ddd";
                 return Ok("Success");
             }
             catch (Exception ex)
