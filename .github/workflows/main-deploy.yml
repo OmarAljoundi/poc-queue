@@ -55,7 +55,7 @@ jobs:
             echo "starting server instance..."
             docker run -d \
               --restart always \
-              -p 0.0.0.0:80:80 \
+              -p 0.0.0.0:80:8080 \
               --name api \
               registry.digitalocean.com/apriltours-2/api:latest
 
@@ -90,7 +90,7 @@ jobs:
             echo "starting server instance..."
             docker run -d \
               --restart always \
-              -p 0.0.0.0:80:80 \
+              -p 0.0.0.0:80:8080 \
               --name api \
               registry.digitalocean.com/apriltours-2/api:latest
 
