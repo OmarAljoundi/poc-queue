@@ -25,8 +25,8 @@ jobs:
           context: .
           push: true
           tags: |
-            registry.digitalocean.com/apriltours-2:latest
-            registry.digitalocean.com/apriltours-2:sha-${{ github.sha }}
+            registry.digitalocean.com/apriltours-2/api:latest
+            registry.digitalocean.com/apriltours-2/api:sha-${{ github.sha }}
 
   deploy-api-1:
     needs: build
@@ -42,7 +42,7 @@ jobs:
           port: 22
           script: |
             doctl registry login --expiry-seconds 180
-            docker pull registry.digitalocean.com/apriltours-2:latest
+            docker pull registry.digitalocean.com/apriltours-2/api:latest
 
         
 
@@ -57,7 +57,7 @@ jobs:
               --restart always \
               -p 0.0.0.0:80:80 \
               --name api \
-              registry.digitalocean.com/apriltours-2:latest
+              registry.digitalocean.com/apriltours-2/api:latest
 
             echo "giving healthcheck time to recover..."
             sleep 40 # ((healthy + 1) * interval)
@@ -78,7 +78,7 @@ jobs:
           port: 22
           script: |
             doctl registry login --expiry-seconds 180
-            docker pull registry.digitalocean.com/apriltours-2:latest
+            docker pull registry.digitalocean.com/apriltours-2/api:latest
 
 
             echo "giving healthcheck time to fail..."
@@ -92,7 +92,7 @@ jobs:
               --restart always \
               -p 0.0.0.0:80:80 \
               --name api \
-              registry.digitalocean.com/apriltours-2:latest
+              registry.digitalocean.com/apriltours-2/api:latest
 
             echo "giving healthcheck time to recover..."
             sleep 40 # ((healthy + 1) * interval)
