@@ -1,6 +1,4 @@
-﻿using Core.Logging.OpenSearch.Abstraction;
-using Core.Queuing.Sample.Crm.Api.Entity;
-using Core.Queuing.Sample.Crm.Api.Service;
+﻿
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Queuing.Sample.Crm.Api.Controllers
@@ -10,18 +8,27 @@ namespace Core.Queuing.Sample.Crm.Api.Controllers
     public class CustomerController : ControllerBase
     {
 
-        private readonly ICustomerService _customerService;
-        private readonly ILogging _log;
 
-
-        public CustomerController(ICustomerService customerService,ILogging log)
+        public CustomerController()
         {
-            _customerService = customerService;
-            _log = log;
-
         }
 
-        [HttpPost]
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+
+                return Ok("Success");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /*[HttpPost]
         public async Task<IActionResult> Post([FromBody] CustomerInsert customer)
         {
             try
@@ -47,7 +54,7 @@ namespace Core.Queuing.Sample.Crm.Api.Controllers
             {
                 throw ex;
             }
-        }
+        }*/
 
 
     }

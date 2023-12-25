@@ -10,16 +10,16 @@ using Core.Queuing.OptionsBuilder;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services
+/*builder.Services
     .AddDbContext<ServiceDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+*/
 
-
-builder.Services.AddQueue(ctg =>
+/*builder.Services.AddQueue(ctg =>
 {
     ctg.DefaultOptions = new DefaultOptions
     {
@@ -53,14 +53,14 @@ builder.Services.AddQueue(ctg =>
     });
 
     ctg.AddTransactionFile();
-});
+});*/
+/*
 
-
-builder.Services.AddScoped<ICapSubscribe, CustomersSubscriberService>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICapSubscribe, CustomersSubscriberService>();*/
+//builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 var app = builder.Build();
-
+app.UseHealthChecks("/health");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
