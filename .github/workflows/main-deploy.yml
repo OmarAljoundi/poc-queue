@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Check Out Repo 
         uses: actions/checkout@v2
-      - name: Install doctl
+      - name: Install DigitalOcean Controller
         uses: digitalocean/action-doctl@v2
         with:
-          token: dop_v1_86c223453d2bc447b97fff7c1ede3be0181858cf39674cbfd7837faece967da5
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Set up Docker Builder
         uses: docker/setup-buildx-action@v1
       - name: Authenticate with DigitalOcean Container Registry
@@ -36,9 +36,9 @@ jobs:
       - name: Deploy api to DigitalOcean Droplet
         uses: appleboy/ssh-action@v0.1.4
         with:
-          host: 165.22.83.101
+          host: ${{ secrets.DO_API1_HOST }}
           username: root
-          key: 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
+          key: ${{ secrets.DO_API_KEY }}
           port: 22
           script: |
             doctl registry login --expiry-seconds 180
@@ -73,9 +73,9 @@ jobs:
       - name: Deploy api to DigitalOcean Droplet
         uses: appleboy/ssh-action@v0.1.4
         with:
-          host: 165.22.83.172
+          host: ${{ secrets.DO_API2_HOST }}
           username: root
-          key: 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
+          key: ${{ secrets.DO_API_KEY }}
           port: 22
           script: |
             doctl registry login --expiry-seconds 180
